@@ -1,3 +1,10 @@
+@font-face {
+    font-family: "Oswald";
+    src: url("../fonts/Oswald-VariableFont_wght.ttf");
+}
+
 body {
-    background: linear-gradient(360deg, #211F20 0%, #44403F 100%)
+    background: linear-gradient(360deg, #211F20 0%, #44403F 100%);
+    font-family: 'Oswald';
+    letter-spacing: 0.1em;
 }
