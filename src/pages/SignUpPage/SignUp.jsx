@@ -122,7 +122,7 @@ const SignUp = () => {
       checkError();
       setAllClear();
     } else {
-      console.log("Не удалось зарегистрироваться как клиент");
+      // console.log("Не удалось зарегистрироваться как клиент");
     }
   };
 
@@ -141,7 +141,7 @@ const SignUp = () => {
       checkError();
       setAllClear();
     } else {
-      console.log("Не удалось зарегистрироваться как партнер");
+      // console.log("Не удалось зарегистрироваться как партнер");
     }
   };
   const signUpCourier = () => {
@@ -150,7 +150,7 @@ const SignUp = () => {
       checkError();
       setAllClear();
     } else {
-      console.log("Не удалось зарегистрироваться как курьер");
+      // console.log("Не удалось зарегистрироваться как курьер");
     }
   };
 

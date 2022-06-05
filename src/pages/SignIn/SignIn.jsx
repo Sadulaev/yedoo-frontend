@@ -10,7 +10,6 @@ const SignIn = () => {
   const token = useSelector((state) => state.application.token);
 
   const validMail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-  // const validPass = /(?=.*[0-9])(?=.*[!@#$%^&*)(])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*)(]{8,}/
 
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,63 +24,49 @@ const SignIn = () => {
     setPassword(e.target.value);
     setPassActive(true)
   };
-  const handleMailActive = (e) => {
-    setMailActive(false)
-  }
-  const handlePassActive = (e) => {
-    setPassActive(false)
-  }
 
   const submit = () => {
-      dispatch(signin(mail[0], password[0]));
+    dispatch(signin(mail[0], password[0]));
   }
 
-    useEffect(() => {
-      if (token) {
-        navigate("/");
-      }
-    }, [token, navigate]);
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
-    return (
-      <div className={styles.genSin}>
-        <div className={styles.signinContainer}>
-          <div className={styles.signinBox}>
-            <h2>Войти</h2>
-            <p>Электронная почта</p>
+  return (
+    <div className={styles.genSin}>
+      <div className={styles.signinContainer}>
+        <div className={styles.signinBox}>
+          <h2>Войти</h2>
+          <p>Email</p>
             <input
+              className={`${(!mail && mailActive) || (mail && !validMail.test(mail)) ? styles.validError : ""} ${(mail && validMail.test(mail) ? styles.validRight : "")}`}
               type="text"
               value={mail}
               onChange={(e) => handleMail(e)}
-              onBlur={handleMailActive}
-              />
-              <span className={styles.validErr}>
-                {!mail && mailActive ? "Введите email" : ""}
-                {mail && !validMail.test(mail) ? "Не корректный email" : ""}
-              </span>
-            <p>Пароль</p>
+            />
+          <p>Пароль</p>
             <input
+              className={`${!password && passActive ? styles.validError : ""} ${password ? styles.validRight : ""}`}
               type="password"
               value={password}
               onChange={(e) => handlePassword(e)}
-              onBlur={handlePassActive}
             />
-            <span className={styles.validErr}>
-            {!password && passActive ? "Введите пароль" : ""}
-            {/* {password && !validPass.test(password) ? "Не корректный пароль" : ""} */}
-            </span>
-            <button className={styles.signInBtn} onClick={() => submit()} disabled={!validMail.test(mail) || !password}>
-              Войти
-            </button>
-          </div>
-          <div className={styles.link}>
-            <span>Нет аккаунта?</span>
-            <Link to={"/signup"}>
-              <p>Зарегистрироваться</p>{" "}
-            </Link>
-          </div>
+          <button className={styles.signInBtn} onClick={() => submit()} disabled={!validMail.test(mail) || !password}>
+            Войти
+          </button>
+        </div>
+        <div className={styles.link}>
+          <span>Нет аккаунта?</span>
+          <Link to={"/signup"}>
+            <p>Зарегистрироваться</p>{" "}
+          </Link>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
-  export default SignIn;
+export default SignIn;
