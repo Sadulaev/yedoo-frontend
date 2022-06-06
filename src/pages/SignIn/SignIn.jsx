@@ -8,6 +8,8 @@ const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.application.token);
+  const error = useSelector((state) => state.application.error);
+  const singingIn = useSelector((state) => state.application.singingIn);
 
   const validMail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
@@ -27,6 +29,7 @@ const SignIn = () => {
 
   const submit = () => {
     dispatch(signin(mail[0], password[0]));
+    setPassword("")
   }
 
   useEffect(() => {
@@ -54,6 +57,8 @@ const SignIn = () => {
               value={password}
               onChange={(e) => handlePassword(e)}
             />
+            <span className={styles.loginWait}>{singingIn ? 'Инициализация...' : ""}</span>
+            <span className={styles.loginErr}>{error ? 'Ошибка: Неверный логин или пароль' : ""}</span>
           <button className={styles.signInBtn} onClick={() => submit()} disabled={!validMail.test(mail) || !password}>
             Войти
           </button>
