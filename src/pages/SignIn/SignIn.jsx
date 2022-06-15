@@ -28,7 +28,7 @@ const SignIn = () => {
   };
 
   const submit = () => {
-    dispatch(signin(mail[0], password[0]));
+    dispatch(signin(mail, password));
     setPassword("")
   }
 
@@ -51,14 +51,17 @@ const SignIn = () => {
               onChange={(e) => handleMail(e)}
             />
           <p>Пароль</p>
+          <form>
             <input
               className={`${!password && passActive ? styles.validError : ""} ${password ? styles.validRight : ""}`}
               type="password"
+              autoComplete="off"
               value={password}
               onChange={(e) => handlePassword(e)}
             />
-            <span className={styles.loginWait}>{singingIn ? 'Инициализация...' : ""}</span>
-            <span className={styles.loginErr}>{error ? 'Ошибка: Неверный логин или пароль' : ""}</span>
+          </form>
+          <span className={styles.loginWait}>{singingIn ? 'Инициализация...' : ""}</span>
+          <span className={styles.loginErr}>{error ? 'Ошибка: Неверный логин или пароль' : ""}</span>
           <button className={styles.signInBtn} onClick={() => submit()} disabled={!validMail.test(mail) || !password}>
             Войти
           </button>

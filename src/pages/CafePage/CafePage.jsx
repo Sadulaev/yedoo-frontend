@@ -43,8 +43,6 @@ const CafePage = () => {
   const food = useSelector((state) => state.food.food);
   const categories = useSelector((state) => state.categories.categories);
 
-  console.log(food);
-
   const cafe1 = cafe?.find((cafe) => cafe._id === params.id);
 
   const foodCafe = food?.filter((food) => {
