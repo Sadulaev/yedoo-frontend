@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createCafe,
@@ -231,13 +231,17 @@ const SignUp = () => {
           />
 
           <p>Пароль</p>
-          <input
+          <form>
+            <input
             className={passwordErr ? styles.error : styles.notErr}
             type="password"
+            autoComplete="off"
             value={password}
             onChange={(e) => handleInput(e, "password")}
           />
 
+          </form>
+          
           {/* <p>Повторите пароль</p>
           <input
             className={passwordErr ? styles.error : styles.notErr}
@@ -307,12 +311,16 @@ const SignUp = () => {
           />
 
           <p>Пароль</p>
-          <input
-            className={passwordErr ? styles.error : styles.notErr}
-            type="password"
-            value={password}
-            onChange={(e) => handleInput(e, "password")}
-          />
+          <form>
+            <input
+              className={passwordErr ? styles.error : styles.notErr}
+              type="password"
+              autoComplete="off"
+              value={password}
+              onChange={(e) => handleInput(e, "password")}
+            />
+          </form>
+
 
           {/* <p>Повторите пароль</p>
           <input
@@ -374,12 +382,16 @@ const SignUp = () => {
           />
 
           <p>Пароль</p>
-          <input
-            className={passwordErr ? styles.error : styles.notErr}
-            type="password"
-            value={password}
-            onChange={(e) => handleInput(e, "password")}
-          />
+          <form>
+            <input
+              className={passwordErr ? styles.error : styles.notErr}
+              type="password"
+              autoComplete="off"
+              value={password}
+              onChange={(e) => handleInput(e, "password")}
+            />
+          </form>
+
 
           {/* <p>Повторите пароль</p>
           <input

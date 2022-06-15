@@ -104,3 +104,7 @@
   text-align: center;
   color: red;
 }
+
+form input {
+  width: 100%;
+}

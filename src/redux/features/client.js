@@ -49,7 +49,6 @@ export const fetchClientByToken = () => {
                     error: json.error,
                 });
             } else {
-                console.log(json);
                 dispatch({ type: "clientByToken/fetch/fulfilled", payload: json });
             }
         } catch (e) {

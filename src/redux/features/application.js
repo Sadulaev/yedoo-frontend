@@ -225,7 +225,7 @@ export const signin = (mail, password) => {
       }
     });
     const json = await res.json();
-    console.log(json);
+    // console.log(json);
     if (json.error) {
       dispatch({
         type: "application/signin/rejected",
